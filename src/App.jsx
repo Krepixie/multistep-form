@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Input from "./components/Input/Input";
+import Step from "./components/Step/Step";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="sidebar">
+        <ol>
+          <Step number={"1"} description={"Your info"} />
+          <Step number={"2"} description={"Select plan"} />
+          <Step number={"3"} description={"Add-ons"} />
+          <Step number={"4"} description={"Summary"} />
+        </ol>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main>
+        <h2>Personal Info</h2>
+        <span>Please provide your name, email address, and phone number.</span>
+        <form>
+          <Input
+            name={"name"}
+            type={"text"}
+            label={"Name"}
+            placeholder={"e.g. Stephen King"}
+          />
+          <Input
+            name={"email"}
+            type={"email"}
+            label={"Email Adress"}
+            placeholder={"e.g. stephenking@lorem.com"}
+          />
+          <Input
+            name={"phone"}
+            type={"tel"}
+            label={"Phone Number"}
+            placeholder={"e.g. +0 123 456 789"}
+          />
+        </form>
+      </main>
+      <button type="submit">Next Step</button>
     </>
-  )
+  );
 }
-
-export default App
